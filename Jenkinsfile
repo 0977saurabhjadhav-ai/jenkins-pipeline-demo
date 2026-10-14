@@ -1,44 +1,27 @@
 pipeline {
-agent any
+    agent any
 
-```
-stages {
-    stage('Checkout') {
-        steps {
-            echo 'GitHub repository checkout successful!'
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Build started successfully!'
+                bat 'echo Hello from Jenkins!'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Test stage executed successfully!'
+            }
         }
     }
 
-    stage('Build') {
-        steps {
-            echo 'Building project...'
-            bat 'echo Build Successful!'
+    post {
+        success {
+            echo 'PIPELINE SUCCESS!'
+        }
+        failure {
+            echo 'PIPELINE FAILED!'
         }
     }
-
-    stage('Test') {
-        steps {
-            echo 'Running tests...'
-            bat 'echo Tests Passed!'
-        }
-    }
-
-    stage('Complete') {
-        steps {
-            echo 'Jenkins Pipeline completed successfully!'
-        }
-    }
-}
-
-post {
-    success {
-        echo 'Pipeline executed successfully!'
-    }
-
-    failure {
-        echo 'Pipeline failed!'
-    }
-}
-```
-
 }
