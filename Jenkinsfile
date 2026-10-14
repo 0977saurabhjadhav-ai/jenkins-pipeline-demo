@@ -1,44 +1,44 @@
-```groovy
 pipeline {
-    agent any
+agent any
 
-    stages {
-        stage('Checkout') {
-            steps {
-                echo 'Checking out GitHub repository...'
-                checkout scm
-            }
-        }
-
-        stage('Build') {
-            steps {
-                echo 'Building the project...'
-                bat 'echo Build Successful!'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo 'Running tests...'
-                bat 'echo Tests Passed!'
-            }
-        }
-
-        stage('Complete') {
-            steps {
-                echo 'GitHub Jenkins Pipeline completed successfully!'
-            }
+```
+stages {
+    stage('Checkout') {
+        steps {
+            echo 'GitHub repository checkout successful!'
         }
     }
 
-    post {
-        success {
-            echo 'Pipeline executed successfully!'
+    stage('Build') {
+        steps {
+            echo 'Building project...'
+            bat 'echo Build Successful!'
         }
+    }
 
-        failure {
-            echo 'Pipeline failed. Check Console Output.'
+    stage('Test') {
+        steps {
+            echo 'Running tests...'
+            bat 'echo Tests Passed!'
+        }
+    }
+
+    stage('Complete') {
+        steps {
+            echo 'Jenkins Pipeline completed successfully!'
         }
     }
 }
+
+post {
+    success {
+        echo 'Pipeline executed successfully!'
+    }
+
+    failure {
+        echo 'Pipeline failed!'
+    }
+}
 ```
+
+}
